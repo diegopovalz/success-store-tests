@@ -2,10 +2,20 @@ import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import Image from "next/image";
 
 const ShoppingCart = () => {
-  const { cartProducts, removeProductFromCart } = useShoppingCartContext();
+  const { cartProducts, addProductToCart, removeProductFromCart } =
+    useShoppingCartContext();
 
-  const handleProductDelete = (productId: number) => {
-    removeProductFromCart(productId, true);
+  const handleProductAdd = (productIndex: number) => {
+    addProductToCart(cartProducts[productIndex]);
+  };
+
+  const handleProductRemove = (
+    productIndex: number,
+    remove: boolean = true
+  ) => {
+    console.log("clicked ", productIndex, remove);
+    if (remove) removeProductFromCart(cartProducts[productIndex].id, false);
+    else removeProductFromCart(cartProducts[productIndex].id, true);
   };
 
   return (
@@ -24,11 +34,17 @@ const ShoppingCart = () => {
           <th>Total</th>
         </tr>
         <tr>
-          <th>Remove</th>
+          <th>Add 1</th>
+        </tr>
+        <tr>
+          <th>Remove 1</th>
+        </tr>
+        <tr>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
-        {cartProducts.map((product) => (
+        {cartProducts.map((product, index) => (
           <tr key={product.id}>
             <td className="flex flex-col">
               <Image src="" alt="Item image" width={100} height={100} />
@@ -45,11 +61,32 @@ const ShoppingCart = () => {
             </td>
             <td>
               <button
+                className="bg-red-600"
                 onClick={() => {
-                  handleProductDelete(product.id);
+                  handleProductAdd(index);
                 }}
               >
-                Remove
+                Add 1
+              </button>
+            </td>
+            <td>
+              <button
+                className="bg-red-600"
+                onClick={() => {
+                  handleProductRemove(index, true);
+                }}
+              >
+                Remove 1
+              </button>
+            </td>
+            <td>
+              <button
+                className="bg-red-600"
+                onClick={() => {
+                  handleProductRemove(index, false);
+                }}
+              >
+                Delete
               </button>
             </td>
           </tr>

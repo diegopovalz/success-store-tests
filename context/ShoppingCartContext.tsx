@@ -53,7 +53,7 @@ const ShoppingCartContextProvider = ({
     });
   };
 
-  const removeProductFromCart = (productId: number, removeAll?: boolean) => {
+  const removeProductFromCart = (productId: number, removeAll: boolean) => {
     const product = cartProducts.find((product) => product.id === productId);
     if (!product) return;
 
@@ -67,7 +67,7 @@ const ShoppingCartContextProvider = ({
 
     const newProducts = cartProducts.map((cartProduct) => {
       if (cartProduct.id === product.id) {
-        return { ...cartProduct, amount: cartProduct.amount-- };
+        return { ...cartProduct, amount: cartProduct.amount - 1 };
       }
       return cartProduct;
     });
