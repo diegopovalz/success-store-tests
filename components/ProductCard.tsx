@@ -8,7 +8,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ title, price, imageSource }: ProductCardProps) => {
   return (
-    <div className="h-72 w-40 flex flex-col bg-neutral-200">
+    <div className="h-72 w-40 flex flex-col bg-neutral-200 m-1">
       <Image
         alt={title + " image"}
         src={imageSource}

@@ -1,10 +1,24 @@
 import Image from "next/image";
 import { ProductCard } from "@/components/ProductCard";
+import { NextPage } from "next";
+import { useState } from "react";
+import useSWR from "swr";
 
-const Home = () => {
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+const Home: NextPage = () => {
+  const {
+    data: products,
+    error,
+    isLoading,
+  } = useSWR("https://fakestoreapi.com/products", fetcher);
+
+  if (error) return <p>An error has occured.</p>;
+  if (isLoading) return <p>Loading...</p>;
+
   return (
     <div>
-      <header className="h-20 flex space-x-3">
+      <header className="h-20 flex space-x-3 bg-layout-blue">
         <div className="w-1/6 justify-center items-center">
           <Image
             src="/mundoexito.svg"
@@ -63,12 +77,21 @@ const Home = () => {
       </header>
       <main className="flex flex-col">
         <section className="h-80">
-          <img alt="Landing image"></img>
+          <Image src="" alt="Landing image"></Image>
         </section>
         <section>
           <h2>Explore products</h2>
-          <div>
-            <ProductCard title="Prueba titulo" price={20} imageSource="" />
+          <div className="grid grid-cols-4">
+            {products.map((product: Product) => {
+              return (
+                <ProductCard
+                  key={product.id}
+                  title={product.title}
+                  price={product.price}
+                  imageSource={product.image}
+                />
+              );
+            })}
           </div>
         </section>
         <section>
@@ -76,7 +99,7 @@ const Home = () => {
           <div></div>
         </section>
       </main>
-      <footer className="flex flex-col">
+      <footer className="flex flex-col bg-layout-blue">
         <section className="grid grid-cols-5 debug">
           <div>
             <Image
