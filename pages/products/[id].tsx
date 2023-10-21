@@ -1,14 +1,29 @@
 import { ProductDetailCard } from "@/components/ProductDetailCard";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useShoppingCartContext } from "@/context/ShoppingCartContext";
+import { toast } from "react-toastify";
 
 const Detail = () => {
+  const { addProductToCart } = useShoppingCartContext();
+
   const router = useRouter();
   const { id: productId } = router.query;
 
   const [product, setProduct] = useState<Product>({} as Product);
   const [productError, setProductError] = useState<boolean>(false);
   const [productLoading, setProductLoading] = useState<boolean>(true);
+
+  const handleAddProductClick = () => {
+    addProductToCart({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.image,
+      amount: 1,
+    });
+    toast.success(`${product.title} added to cart!`);
+  };
 
   useEffect(() => {
     const getProductData = async () => {
@@ -43,6 +58,9 @@ const Detail = () => {
           category={product.category}
           rating={product.rating}
         />
+        <button className="bg-red-600" onClick={handleAddProductClick}>
+          Add to cart
+        </button>
         <div></div>
       </section>
     </div>
