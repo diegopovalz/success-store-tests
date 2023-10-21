@@ -1,6 +1,7 @@
 interface CartProduct {
-  id: string;
-  name: string;
+  id: number;
+  title: string;
   price: number;
+  image: string;
   amount: number;
 }

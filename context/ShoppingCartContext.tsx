@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 interface ShoppingCartContextProps {
   cartProducts: CartProduct[];
   addProductToCart: (product: CartProduct) => void;
-  removeProductFromCart: (productId: string, removeAll: boolean) => void;
+  removeProductFromCart: (productId: number, removeAll: boolean) => void;
 }
 
 const ShoppingCartContext = createContext<ShoppingCartContextProps>(
@@ -38,7 +38,7 @@ const ShoppingCartContextProvider = ({
     setCartProducts((prev) => [...prev, { ...product }]);
   };
 
-  const removeProductFromCart = (productId: string, removeAll?: boolean) => {
+  const removeProductFromCart = (productId: number, removeAll?: boolean) => {
     const product = cartProducts.find((product) => product.id === productId);
     if (!product) return;
 
