@@ -1,5 +1,6 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ShoppingCartContextProvider } from "@/context/ShoppingCartContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,9 +9,11 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Header />
-      {children}
-      <Footer />
+      <ShoppingCartContextProvider>
+        <Header />
+        {children}
+        <Footer />
+      </ShoppingCartContextProvider>
     </>
   );
 };

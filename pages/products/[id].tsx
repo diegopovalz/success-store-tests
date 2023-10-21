@@ -1,19 +1,35 @@
 import { ProductDetailCard } from "@/components/ProductDetailCard";
 import { useRouter } from "next/router";
-import useSWR from "swr";
-import { fetcher } from "@/utils/constants";
+import { useEffect, useState } from "react";
 
 const Detail = () => {
   const router = useRouter();
   const { id: productId } = router.query;
-  const {
-    data: product,
-    error,
-    isLoading,
-  } = useSWR(`https://fakestoreapi.com/products/${productId}`, fetcher);
 
-  if (error) return <p>An error has occured.</p>;
-  if (isLoading) return <p>Loading...</p>;
+  const [product, setProduct] = useState<Product>({} as Product);
+  const [productError, setProductError] = useState<boolean>(false);
+  const [productLoading, setProductLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const getProductData = async () => {
+      if (!productId) return;
+      try {
+        setProductLoading(true);
+        const response = await fetch(
+          `https://fakestoreapi.com/products/${productId}`
+        );
+        const data = await response.json();
+        setProduct(data);
+        setProductLoading(false);
+      } catch (error) {
+        setProductError(true);
+      }
+    };
+    getProductData();
+  }, [productId]);
+
+  if (productError) return <p>An error has occured.</p>;
+  if (productLoading) return <p>Loading...</p>;
 
   return (
     <div>

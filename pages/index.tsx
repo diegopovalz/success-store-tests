@@ -1,18 +1,30 @@
 import Image from "next/image";
 import { ProductCard } from "@/components/ProductCard";
 import { NextPage } from "next";
-import useSWR from "swr";
-import { fetcher } from "@/utils/constants";
+import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
-  const {
-    data: products,
-    error,
-    isLoading,
-  } = useSWR("https://fakestoreapi.com/products", fetcher);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [productsError, setProductsError] = useState<boolean>(false);
+  const [productsLoading, setProductsLoading] = useState<boolean>(true);
 
-  if (error) return <p>An error has occured.</p>;
-  if (isLoading) return <p>Loading...</p>;
+  useEffect(() => {
+    const getProductsData = async () => {
+      try {
+        setProductsLoading(true);
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        setProducts(data);
+        setProductsLoading(false);
+      } catch (error) {
+        setProductsError(true);
+      }
+    };
+    getProductsData();
+  }, []);
+
+  if (productsError) return <p>An error has occured.</p>;
+  if (productsLoading) return <p>Loading...</p>;
 
   return (
     <div>
