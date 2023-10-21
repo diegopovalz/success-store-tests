@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ProductCard } from "@/components/ProductCard";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -53,6 +54,9 @@ const Home: NextPage = () => {
           <h2>Explore categories</h2>
           <div></div>
         </section>
+        <Link className="bg-red-600" href="/shopping-cart">
+          carrito
+        </Link>
       </main>
     </div>
   );
