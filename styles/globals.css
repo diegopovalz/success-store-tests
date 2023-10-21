@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* * {
+  margin: 0;
+} */
+
 .debug {
   border: 1px solid red;
 }
