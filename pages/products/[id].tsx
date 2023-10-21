@@ -20,9 +20,10 @@ const Detail = () => {
         );
         const data = await response.json();
         setProduct(data);
-        setProductLoading(false);
       } catch (error) {
         setProductError(true);
+      } finally {
+        setProductLoading(false);
       }
     };
     getProductData();

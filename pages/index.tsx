@@ -15,9 +15,10 @@ const Home: NextPage = () => {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
         setProducts(data);
-        setProductsLoading(false);
       } catch (error) {
         setProductsError(true);
+      } finally {
+        setProductsLoading(false);
       }
     };
     getProductsData();
