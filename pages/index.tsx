@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ProductCard } from "@/components/ProductCard";
 
 const Home = () => {
   return (
@@ -66,7 +67,9 @@ const Home = () => {
         </section>
         <section>
           <h2>Explore products</h2>
-          <div></div>
+          <div>
+            <ProductCard title="Prueba titulo" price={20} imageSource="" />
+          </div>
         </section>
         <section>
           <h2>Explore categories</h2>
