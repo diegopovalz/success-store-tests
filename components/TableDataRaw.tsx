@@ -4,7 +4,7 @@ interface TableDataRawProps {
 
 const TableDataRaw = ({ text }: TableDataRawProps) => {
   return (
-    <td>
+    <td className="border-y-4 py-4 px-6 justify-center items-center">
       <span>{text}</span>
     </td>
   );

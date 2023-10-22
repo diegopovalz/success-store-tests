@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { ProductCard } from "@/components/ProductCard";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useSearchFilterContext } from "@/context/SearchFilterContext";
 import { HomeItemsSection } from "@/components/HomeItemsSection";
 
@@ -41,7 +40,7 @@ const Home = () => {
 
   if (filteredProducts.length === 0) return <p>No products found</p>;
   return (
-    <main className="w-full flex flex-col">
+    <main className="w-screen flex flex-col">
       {searchFilter === "" ? (
         <>
           <section>

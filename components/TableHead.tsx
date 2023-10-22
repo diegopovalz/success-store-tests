@@ -7,13 +7,15 @@ const TableHead = ({ headers }: TableHeadProps) => {
 
   return (
     <thead>
-      {headersList.map((header) => {
-        return (
-          <tr key={header}>
-            <th>{header}</th>
-          </tr>
-        );
-      })}
+      <tr>
+        {headersList.map((header) => {
+          return (
+            <th className="border-2 p-4" key={header}>
+              {header}
+            </th>
+          );
+        })}
+      </tr>
     </thead>
   );
 };

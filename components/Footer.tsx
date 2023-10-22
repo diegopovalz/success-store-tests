@@ -4,7 +4,7 @@ import { FooterNavbar } from "./FooterNavbar";
 
 const Footer = () => {
   return (
-    <footer className="bg-layout-blue border-2 border-indigo-400">
+    <footer className="w-screen bg-layout-blue border-2 border-indigo-400">
       <section className="grid grid-cols-6 p-5">
         <div className="col-span-2">
           <div className="flex flex-col gap-4">
