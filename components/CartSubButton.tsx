@@ -1,11 +1,11 @@
 import { BsFillCartDashFill } from "react-icons/bs";
 
-interface CartDashButtonProps {
+interface CartSubButtonProps {
   onClick: () => void;
   size?: number;
 }
 
-const CartDashButton = ({ onClick, size }: CartDashButtonProps) => {
+const CartSubButton = ({ onClick, size }: CartSubButtonProps) => {
   return (
     <button onClick={onClick} className="cursor-pointer">
       <BsFillCartDashFill size={size ? size : 32} color="red" />
@@ -13,4 +13,4 @@ const CartDashButton = ({ onClick, size }: CartDashButtonProps) => {
   );
 };
 
-export { CartDashButton };
+export { CartSubButton };

@@ -56,12 +56,8 @@ const Detail = () => {
       <main className="w-screen flex items-center justify-center">
         <div className="w-full p-28 grid grid-cols-4">
           <ProductDetailCard
-            title={product.title}
-            image={product.image}
-            price={product.price}
-            description={product.description}
-            category={product.category}
-            rating={product.rating}
+            className="col-span-3"
+            product={{ ...product, amount: 1 }}
           />
           <DeliveryCard
             className="col-span-1"

@@ -1,5 +1,5 @@
-import { CartDashButton } from "@/components/CartDashButton";
-import { CartPlusButton } from "@/components/CartPlusButton";
+import { CartSubButton } from "@/components/CartSubButton";
+import { CartAddButton } from "@/components/CartAddButton";
 import { DeleteButton } from "@/components/DeleteButton";
 import { TableDataImage } from "@/components/TableDataImage";
 import { TableDataRaw } from "@/components/TableDataRaw";
@@ -65,18 +65,14 @@ const ShoppingCart = () => {
                 <TableDataRaw text={product.amount} />
                 <TableDataRaw text={product.price * product.amount} />
                 <td className="border-y-4 py-4 px-6 mx-auto">
-                  <CartDashButton
+                  <CartSubButton
                     onClick={() => {
                       handleProductRemove(index, true);
                     }}
                   />
                 </td>
                 <td className="border-y-4 py-4 px-6 mx-auto">
-                  <CartPlusButton
-                    onClick={() => {
-                      handleProductAdd(index);
-                    }}
-                  />
+                  <CartAddButton product={product} />
                 </td>
                 <td className="border-y-4 border-r-2 py-4 px-6 mx-auto">
                   <DeleteButton

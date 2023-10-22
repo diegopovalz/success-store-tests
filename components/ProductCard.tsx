@@ -1,36 +1,14 @@
 import Image from "next/image";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
-import { toast } from "react-toastify";
-import { CartPlusButton } from "./CartPlusButton";
+import { CartAddButton } from "./CartAddButton";
 
 interface ProductCardProps {
   className?: string;
-  id: number;
-  title: string;
-  price: number;
-  imageSource: string;
+  product: PreviewProduct;
 }
 
-const ProductCard = ({
-  className,
-  id,
-  title,
-  price,
-  imageSource,
-}: ProductCardProps) => {
-  const { addProductToCart } = useShoppingCartContext();
-
-  const handleAddProductClick = () => {
-    addProductToCart({
-      id,
-      title,
-      price,
-      image: imageSource,
-      amount: 1,
-    });
-    toast.success(`${title} added to cart!`);
-  };
-
+const ProductCard = ({ className, product }: ProductCardProps) => {
+  console.log("product en ProductCard", product);
   let divClasses = "h-72 w-40 flex flex-col bg-neutral-200 m-1";
   if (className) divClasses += ` ${className}`;
 
@@ -38,8 +16,8 @@ const ProductCard = ({
     <div className={divClasses}>
       <div className="height-[1500px]">
         <Image
-          alt={title + " image"}
-          src={imageSource}
+          alt={product.title + " image"}
+          src={product.image}
           width={0}
           height={0}
           sizes="100vw"
@@ -47,9 +25,9 @@ const ProductCard = ({
         />
       </div>
       <div className="flex flex-col items-center">
-        <span>{title}</span>
-        <span>{price}</span>
-        <CartPlusButton onClick={handleAddProductClick} color="gray" />
+        <span>{product.title}</span>
+        <span>{product.price}</span>
+        <CartAddButton product={{ ...product, amount: 1 }} color="gray" />
       </div>
     </div>
   );

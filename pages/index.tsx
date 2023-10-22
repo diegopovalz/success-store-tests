@@ -56,12 +56,9 @@ const Home = () => {
               {filteredProducts.map((product: Product) => {
                 return (
                   <ProductCard
-                    className="grid-cols-1"
+                    className="col-span-1"
                     key={`product-${product.id}`}
-                    id={product.id}
-                    title={product.title}
-                    price={product.price}
-                    imageSource={product.image}
+                    product={product}
                   />
                 );
               })}
@@ -70,17 +67,17 @@ const Home = () => {
         </>
       ) : (
         <HomeItemsSection title="Search results">
-          {filteredProducts.map((product: Product) => {
-            return (
-              <ProductCard
-                key={`product-${product.id}`}
-                id={product.id}
-                title={product.title}
-                price={product.price}
-                imageSource={product.image}
-              />
-            );
-          })}
+          <div className="grid grid-cols-4 auto-rows-auto">
+            {filteredProducts.map((product: Product) => {
+              return (
+                <ProductCard
+                  className="col-span-1"
+                  key={`product-${product.id}`}
+                  product={product}
+                />
+              );
+            })}
+          </div>
         </HomeItemsSection>
       )}
       <section>
