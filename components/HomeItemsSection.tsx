@@ -5,9 +5,11 @@ interface HomeItemsSectionProps {
 
 const HomeItemsSection = ({ title, children }: HomeItemsSectionProps) => {
   return (
-    <section>
-      <h2>{title}</h2>
-      <div className="grid grid-cols-4">{children}</div>
+    <section className="flex flex-col px-8">
+      <h1 className="flex justify-center text-5xl font-semibold my-16">
+        {title}
+      </h1>
+      {children}
     </section>
   );
 };

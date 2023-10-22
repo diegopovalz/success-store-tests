@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { ProductCard } from "@/components/ProductCard";
-import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchFilterContext } from "@/context/SearchFilterContext";
@@ -42,17 +41,23 @@ const Home = () => {
 
   if (filteredProducts.length === 0) return <p>No products found</p>;
   return (
-    <div>
-      <main className="flex flex-col">
-        {searchFilter === "" ? (
-          <>
-            <section className="h-80">
-              <Image src="" alt="Landing image"></Image>
-            </section>
-            <HomeItemsSection title="Explore products">
+    <main className="w-full flex flex-col">
+      {searchFilter === "" ? (
+        <>
+          <section>
+            <Image
+              src="/images/cyber-monday-shopping.jpg"
+              alt="Cyber monday landing image"
+              width={2000}
+              height={1000}
+            ></Image>
+          </section>
+          <HomeItemsSection title="Explore products">
+            <div className="grid grid-cols-4 auto-rows-auto">
               {filteredProducts.map((product: Product) => {
                 return (
                   <ProductCard
+                    className="grid-cols-1"
                     key={`product-${product.id}`}
                     id={product.id}
                     title={product.title}
@@ -61,32 +66,29 @@ const Home = () => {
                   />
                 );
               })}
-            </HomeItemsSection>
-          </>
-        ) : (
-          <HomeItemsSection title="Search results">
-            {filteredProducts.map((product: Product) => {
-              return (
-                <ProductCard
-                  key={`product-${product.id}`}
-                  id={product.id}
-                  title={product.title}
-                  price={product.price}
-                  imageSource={product.image}
-                />
-              );
-            })}
+            </div>
           </HomeItemsSection>
-        )}
-        <section>
-          <h2>Explore categories</h2>
-          <div></div>
-        </section>
-        <Link className="bg-red-600" href="/shopping-cart">
-          carrito
-        </Link>
-      </main>
-    </div>
+        </>
+      ) : (
+        <HomeItemsSection title="Search results">
+          {filteredProducts.map((product: Product) => {
+            return (
+              <ProductCard
+                key={`product-${product.id}`}
+                id={product.id}
+                title={product.title}
+                price={product.price}
+                imageSource={product.image}
+              />
+            );
+          })}
+        </HomeItemsSection>
+      )}
+      <section>
+        <h2>Explore categories</h2>
+        <div></div>
+      </section>
+    </main>
   );
 };
 

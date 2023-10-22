@@ -1,42 +1,23 @@
 import Image from "next/image";
-import { Searchbar } from "./Searchbar";
+import { SearchBar } from "./SearchBar";
+import { HeaderNavbar } from "./HeaderNavbar";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="h-20 flex space-x-3 bg-layout-blue">
-      <div className="w-1/6 justify-center items-center">
-        <Image
-          src="/mundoexito.svg"
-          alt="Success-store Logo"
-          width={99}
-          height={39}
-        />
+    <header className="w-full h-20 grid grid-cols-5 bg-layout-blue">
+      <div className="col-span-1 flex items-center justify-center">
+        <Link href="/" className="cursor-pointer">
+          <Image
+            src="/icons/store-logo.svg"
+            alt="Success-store Logo"
+            width={99}
+            height={39}
+          />
+        </Link>
       </div>
-      <Searchbar />
-      <div className="w-3/6 h-full flex items-center">
-        <nav className="w-full flex">
-          <ul className="w-full flex justify-around">
-            <li>
-              <a>About us</a>
-            </li>
-            <li>
-              <a>Contact us</a>
-            </li>
-            <li>
-              <a>My account</a>
-            </li>
-            <li>
-              <a>My account</a>
-            </li>
-            <li>
-              <a>
-                Shopping cart
-                <i></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <SearchBar className="col-span-2" />
+      <HeaderNavbar className="col-span-2" />
     </header>
   );
 };

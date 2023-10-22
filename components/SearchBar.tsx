@@ -1,6 +1,11 @@
 import { useSearchFilterContext } from "@/context/SearchFilterContext";
+import { SearchButton } from "./SearchButton";
 
-const Searchbar = () => {
+interface SearchBarProps {
+  className?: string;
+}
+
+const SearchBar = ({ className }: SearchBarProps) => {
   const { submitSearchFilter } = useSearchFilterContext();
 
   const handleSearchSubmit = () => {
@@ -8,8 +13,11 @@ const Searchbar = () => {
     submitSearchFilter(inputElement.value);
   };
 
+  let divClasses = "flex items-center justify-center";
+  if (className) divClasses += ` ${className}`;
+
   return (
-    <div className="w-2/6">
+    <div className={divClasses}>
       <label htmlFor="search" hidden={true}>
         Input what you want to find
       </label>
@@ -17,13 +25,11 @@ const Searchbar = () => {
         type="search"
         id="search"
         placeholder="Search product names"
+        className="w-2/3 h-3/5 bg-white rounded-sm border-1 border-gray-300 p-2"
       ></input>
-      <button className="bg-red-600" type="button" onClick={handleSearchSubmit}>
-        Buscar
-        <svg></svg>
-      </button>
+      <SearchButton onClick={handleSearchSubmit} />
     </div>
   );
 };
 
-export { Searchbar };
+export { SearchBar };
