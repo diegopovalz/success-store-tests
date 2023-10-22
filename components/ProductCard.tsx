@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import { toast } from "react-toastify";
+import { CartPlusButton } from "./CartPlusButton";
 
 interface ProductCardProps {
   className?: string;
@@ -30,8 +31,6 @@ const ProductCard = ({
     toast.success(`${title} added to cart!`);
   };
 
-  //224
-
   let divClasses = "h-72 w-40 flex flex-col bg-neutral-200 m-1";
   if (className) divClasses += ` ${className}`;
 
@@ -50,7 +49,7 @@ const ProductCard = ({
       <div className="flex flex-col items-center">
         <span>{title}</span>
         <span>{price}</span>
-        <button onClick={handleAddProductClick}>Add to cart</button>
+        <CartPlusButton onClick={handleAddProductClick} color="gray" />
       </div>
     </div>
   );
