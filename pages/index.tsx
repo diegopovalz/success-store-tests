@@ -4,6 +4,7 @@ import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchFilterContext } from "@/context/SearchFilterContext";
+import { HomeItemsSection } from "@/components/HomeItemsSection";
 
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -39,15 +40,31 @@ const Home = () => {
             .includes(searchFilter.toLowerCase());
         });
 
+  if (filteredProducts.length === 0) return <p>No products found</p>;
   return (
     <div>
       <main className="flex flex-col">
-        <section className="h-80">
-          <Image src="" alt="Landing image"></Image>
-        </section>
-        <section>
-          <h2>Explore products</h2>
-          <div className="grid grid-cols-4">
+        {searchFilter === "" ? (
+          <>
+            <section className="h-80">
+              <Image src="" alt="Landing image"></Image>
+            </section>
+            <HomeItemsSection title="Explore products">
+              {filteredProducts.map((product: Product) => {
+                return (
+                  <ProductCard
+                    key={`product-${product.id}`}
+                    id={product.id}
+                    title={product.title}
+                    price={product.price}
+                    imageSource={product.image}
+                  />
+                );
+              })}
+            </HomeItemsSection>
+          </>
+        ) : (
+          <HomeItemsSection title="Search results">
             {filteredProducts.map((product: Product) => {
               return (
                 <ProductCard
@@ -59,8 +76,8 @@ const Home = () => {
                 />
               );
             })}
-          </div>
-        </section>
+          </HomeItemsSection>
+        )}
         <section>
           <h2>Explore categories</h2>
           <div></div>
