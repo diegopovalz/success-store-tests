@@ -13,7 +13,6 @@ const ShoppingCart = () => {
     productIndex: number,
     remove: boolean = true
   ) => {
-    console.log("clicked ", productIndex, remove);
     if (remove) removeProductFromCart(cartProducts[productIndex].id, false);
     else removeProductFromCart(cartProducts[productIndex].id, true);
   };

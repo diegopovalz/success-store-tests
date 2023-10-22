@@ -12,19 +12,12 @@ const ShoppingCartContext = createContext<ShoppingCartContextProps>(
 
 export const useShoppingCartContext = () => useContext(ShoppingCartContext);
 
-interface ShoppingCartContextProviderProps {
-  children: React.ReactNode;
-}
-
 const CART_STORAGE_KEY = "cartProducts";
 
-const ShoppingCartContextProvider = ({
-  children,
-}: ShoppingCartContextProviderProps) => {
+const ShoppingCartContextProvider = ({ children }: ContextProviderProps) => {
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
 
   useEffect(() => {
-    // Cargar datos del carrito desde el localStorage al montar el componente
     const storedCart = localStorage.getItem(CART_STORAGE_KEY);
     if (storedCart) {
       setCartProducts(JSON.parse(storedCart));

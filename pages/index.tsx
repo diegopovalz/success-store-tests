@@ -3,11 +3,13 @@ import { ProductCard } from "@/components/ProductCard";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchFilterContext } from "@/context/SearchFilterContext";
 
-const Home: NextPage = () => {
+const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [productsError, setProductsError] = useState<boolean>(false);
   const [productsLoading, setProductsLoading] = useState<boolean>(true);
+  const { searchFilter } = useSearchFilterContext();
 
   useEffect(() => {
     const getProductsData = async () => {
@@ -28,6 +30,15 @@ const Home: NextPage = () => {
   if (productsError) return <p>An error has occured.</p>;
   if (productsLoading) return <p>Loading...</p>;
 
+  const filteredProducts =
+    searchFilter === ""
+      ? products
+      : products.filter((product) => {
+          return product.title
+            .toLowerCase()
+            .includes(searchFilter.toLowerCase());
+        });
+
   return (
     <div>
       <main className="flex flex-col">
@@ -37,7 +48,7 @@ const Home: NextPage = () => {
         <section>
           <h2>Explore products</h2>
           <div className="grid grid-cols-4">
-            {products.map((product: Product) => {
+            {filteredProducts.map((product: Product) => {
               return (
                 <ProductCard
                   key={`product-${product.id}`}
