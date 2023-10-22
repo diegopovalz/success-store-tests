@@ -60,7 +60,7 @@ const Detail = () => {
             product={{ ...product, amount: 1 }}
           />
           <DeliveryCard
-            className="col-span-1"
+            className="col-span-1 h-[450px]"
             location="Cra. 67 con Cll. 104a"
             text={deliveryCardText}
             stock={true}
