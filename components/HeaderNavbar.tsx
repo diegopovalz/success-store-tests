@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { BsFillCartFill } from "react-icons/bs";
 
 interface HeaderNavbarProps {
   className?: string;
@@ -23,13 +23,8 @@ const HeaderNavbar = ({ className }: HeaderNavbarProps) => {
           </Link>
         </li>
         <li>
-          <Link href="/shopping-cart">
-            <Image
-              src="/icons/cart2.svg"
-              alt="Shopping cart"
-              width={24}
-              height={24}
-            />
+          <Link href="/shopping-cart" className="cursor-pointer">
+            <BsFillCartFill size={26} color="white" />
           </Link>
         </li>
       </ul>

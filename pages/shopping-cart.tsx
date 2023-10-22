@@ -63,7 +63,7 @@ const ShoppingCart = () => {
                   }}
                 />
               </td>
-              <td className="border-y-4 py-4 px-6">
+              <td className="border-y-4 py-4 px-6 mx-auto">
                 <CartPlusButton
                   onClick={() => {
                     handleProductAdd(index);
@@ -71,7 +71,7 @@ const ShoppingCart = () => {
                 />
               </td>
 
-              <td className="border-y-4 border-r-2 py-4 px-6">
+              <td className="border-y-4 border-r-2 py-4 px-6 mx-auto">
                 <DeleteButton
                   onClick={() => {
                     handleProductRemove(index, false);

@@ -7,7 +7,7 @@ interface CartDashButtonProps {
 
 const CartDashButton = ({ onClick, size }: CartDashButtonProps) => {
   return (
-    <button onClick={onClick}>
+    <button onClick={onClick} className="cursor-pointer">
       <BsFillCartDashFill size={size ? size : 32} color="red" />
     </button>
   );
