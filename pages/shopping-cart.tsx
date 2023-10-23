@@ -5,9 +5,10 @@ import { TableDataImage } from "@/components/shopping-cart/TableDataImage";
 import { TableDataRaw } from "@/components/shopping-cart/TableDataRaw";
 import { TableHead } from "@/components/shopping-cart/TableHead";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
+import Link from "next/link";
 
 const ShoppingCart = () => {
-  const { cartProducts, removeProductFromCart } = useShoppingCartContext();
+  const { cartProducts } = useShoppingCartContext();
 
   const totalProducts = cartProducts.length;
 
@@ -18,14 +19,6 @@ const ShoppingCart = () => {
     });
     if (total === 0) return 1;
     return total;
-  };
-
-  const handleProductRemove = (
-    productIndex: number,
-    remove: boolean = true
-  ) => {
-    if (remove) removeProductFromCart(cartProducts[productIndex].id, false);
-    else removeProductFromCart(cartProducts[productIndex].id, true);
   };
 
   return (
@@ -77,7 +70,14 @@ const ShoppingCart = () => {
             </tbody>
           </table>
           {cartProducts.length ? (
-            <span className="m-5 text-2xl font-semibold">{`Total: $${calculateTotal()}`}</span>
+            <>
+              <span className="m-5 text-2xl font-semibold">{`Total: $${calculateTotal()}`}</span>
+              <Link href="/payment">
+                <button className="bg-cyan-600 text-white font-semibold rounded-md py-2 px-4">
+                  Go to payment
+                </button>
+              </Link>
+            </>
           ) : null}
         </div>
       </main>

@@ -46,7 +46,7 @@ Se desea desarrollar el front-end de una aplicación web tipo e-commerce. Esta a
    **Ruta en la aplicación:** /products/\[id\]
 4. **Carrito de compras:** en la esquina superior derecha de la página de inicio se encuentra un ícono de carrito que redirige a esta página. Acá se podrán encontrar los productos añadidos ya sea al clickear el botón correspondiente en la página de inicio como al hacerlo en la página de detalle. Esta página también cumple con todos los requerimientos para este punto.
    **Ruta en la aplicación:** /shopping-cart
-5. **Página de pago:** se programó un formulario simple con los inputs descritos y se usó un toast para confirmar el pago.
+5. **Página de pago:** se programó un formulario simple con los inputs descritos y se usó un toast para confirmar el pago. Para llegar a esta página, se debe clickear el botón "Go to payment" que se renderiza en la página del carrito de compras solo cuando esta tiene items en la lista.
    **Ruta:** la ruta de la página de detalle en la aplicación es: /payment
 
 **Comentarios adicionales:**
@@ -67,3 +67,5 @@ No logré realizar los test unitarios. Se intentó las librerías con Jest y Rea
 ## Despliegue
 
 Para el despliegue se ha utilizado el servicio de Vercel, el cual es perfectamente integrable con las aplicaciones de _Next.js_. Se puede seguir el proceso en esta guía https://nextjs.org/learn/basics/deploying-nextjs-app/deploy.
+
+**Link de la aplicación desplegada:**https://success-store.vercel.app/
