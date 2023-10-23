@@ -23,7 +23,7 @@ const ProductDetailCard = ({ className, product }: ProductDetailCardProps) => {
       <div className="flex flex-col w-3/4 p-8 gap-y-3">
         <span className="text-2xl font-semibold">{product.title}</span>
         <div className="flex gap-x-1">
-          <span className="font-semibold">Brand: </span>
+          <span className="font-semibold">Category: </span>
           <span className="text-cyan-600">{product.category}</span>
         </div>
         <p>{product.description}</p>

@@ -60,9 +60,9 @@ const ShoppingCart = () => {
                     imageSource={product.image}
                     text={product.title}
                   />
-                  <TableDataRaw text={product.price} />
+                  <TableDataRaw text={`$${product.price}`} />
                   <TableDataRaw text={product.amount} />
-                  <TableDataRaw text={product.price * product.amount} />
+                  <TableDataRaw text={`$${product.price * product.amount}`} />
                   <td className="border-y-4 py-4 px-6 text-center">
                     <CartSubButton productId={product.id} removeAll={false} />
                   </td>
