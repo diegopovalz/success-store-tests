@@ -1,40 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Success Store
 
-## Getting Started
+## Enunciado
 
-First, run the development server:
+**Contexto:**
+Se desea desarrollar el front-end de una aplicación web tipo e-commerce. Esta aplicación será desarrollada usando las tecnologías React, Next.js, TypeScript, Node. Adicionalmente, los datos a cargar en las vistas provendrán de la API pública Fake Store API, la cual cuenta con endpoints para traer una lista de productos, para traer un producto específico, para filtrar por categorías, etc.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Requerimientos:**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Header y Footer:
+   - La aplicación debe contener un header y footer que siempre estarán visibles.
+2. Página de Inicio:
+   - La página de inicio debe mostrar una lista de productos disponibles.
+   - Cada producto debe incluir una imagen, nombre y precio.
+   - Los usuarios deben poder agregar productos al carrito desde esta página.
+   - Debe contar con un buscador donde se filtren los productos.
+3. Detalle del producto: - La página de detalle del producto debe mostrar el nombre, imagen, precio, descripción,
+   categoría y ratings. - Los usuarios deben poder agregar el producto al carrito desde esta página.
+4. Carrito de compras:
+   - La aplicación debe tener un carrito de compras que muestra los productos agregados.
+   - Los usuarios deben poder aumentar o disminuir la cantidad de productos en el carrito.
+   - Los usuarios deben poder eliminar productos del carrito.
+   - Debe mostrarse el total de la compra en el carrito.
+5. (Opcional) Página de Pago:
+   - La aplicación debe tener una página de pago ficticia que incluye un formulario para la información del usuario.
+   - El formulario debe incluir campos para el nombre, dirección y datos de tarjeta de crédito (números ficticios).
+   - Después de completar el formulario, los usuarios deben poder confirmar su compra.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Objetivos cumplidos
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Header y Footer: se han creado un elemento Layout el cual engloba a los elementos Header y Footer. Este componente Layout se renderiza en la página \_app.tsx para englobar a toda la aplicación.
+2. Página de inicio: se tiene una página de inicio donde se listan todos los productos obtenidos al hacer request a la ruta https://fakestoreapi.com/products. Se puede realizar un filtrado por título, donde se buscará equivalencias entre la palabra introducida en el filtro de búsqueda y los títulos de los productos. Cada producto cuenta con los elementos requeridos.
+3. Detalle del producto: se tiene una página de detalle donde se lista el detalle del producto. A esta página se redirige cuando un usuario clickea en el botón de información de un producto en la página principal. La data se obtiene de la ruta https://fakestoreapi.com/products/[id]. Esta página cumple con todos los requerimientos para este punto.
+4. Carrito de compras: en la esquina superior derecha de la página de inicio se encuentra un ícono de carrito que redirige a esta página. Acá se podrán encontrar los productos añadidos ya sea al clickear el botón correspondiente en la página de inicio como al hacerlo en la página de detalle. Esta página también cumple con todos los requerimientos para este punto,
+5. TODO
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**Comentarios adicionales:**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Al clickear en los botones de agregar, disminuir o eliminar producto del carrito, se desplega un toast indicando lo sucedido.
+- Para llevar un tracking de los productos que hay en el carrito en las diferentes páginas se ha hecho uso del local storage del navegador junto con un Contexto de React.
+- De igual manera se usó un Contexto de React para hacer tracking durante los diferentes componentes del filtro de búsqueda (si aplica).
+- A la hora de filtrar productos, la práctica estándar es que la API provea de unas rutas especializadas para este proceso, de manera que retornan la lista de objetos ya filtrada. Si bien en esta API contaba con un filtro por categorías, dada la interpretación del enunciado, se ha decidido optar por el filtro por título, aún si esto no es considerado la mejor práctica; mi mayor interés es demostrar mi capacidad técnica.
 
-## Learn More
+## Dificultades
 
-To learn more about Next.js, take a look at the following resources:
+No logré realizar los test unitarios. Se intentó las librerías con Jest y React Testing pero por un error (creo yo) de configuración, no se lograba obtener correctamente el componente de página renderizado. Sin embargo, se tenían planteados los siguientes tests:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Validar los productos que se renderizan en la página de inicio: en el test se hace un request a la API para obtener nuevamente la lista de productos; se obtienen los elementos renderizados de ProductCard y se comparan el tamaño de ambas listas y los títulos de los elementos de cada una de las listas, esperando coincidencia en ambos casos.
+2. Añadir, reducir y eliminar producto del carrito de compras: se consulta el local storage o el useState de los productos del carrito para obtener el valor actual de la lista del carro de compras. Se clickea el botón de añadir y se vuelve a validar la lista para comprobar que el producto se ha añadido exitosamente. Se realiza el proceso respectivo para reducir y eliminar.
+3. Reducir lista de acuerdo al filtro: se actualiza el valor del useState del filtro de búsqueda y se obtienen los ProductCard renderizados para la lista filtrada. Se recorre cada uno de estos elementos validando que el título sí contenga la cadena de carácteres introducida en el filtro de búsqueda.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Despliegue
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+TODO
