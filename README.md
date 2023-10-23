@@ -41,9 +41,13 @@ Se desea desarrollar el front-end de una aplicación web tipo e-commerce. Esta a
 
 1. Header y Footer: se han creado un elemento Layout el cual engloba a los elementos _Header_ y _Footer_. Este componente Layout se renderiza en la página \_\_app.tsx\_\_ para englobar a toda la aplicación.
 2. Página de inicio: se tiene una página de inicio donde se listan todos los productos obtenidos al hacer request a la ruta https://fakestoreapi.com/products. Se puede realizar un filtrado por título, donde se buscará equivalencias entre la palabra introducida en el filtro de búsqueda y los títulos de los productos. Cada producto cuenta con los elementos requeridos.
+   **Ruta:** la ruta de la página principal en la aplicación es: /
 3. Detalle del producto: se tiene una página de detalle donde se lista el detalle del producto. A esta página se redirige cuando un usuario clickea en el botón de información de un producto en la página principal. La data se obtiene de la ruta https://fakestoreapi.com/products/[id]. Esta página cumple con todos los requerimientos para este punto.
-4. Carrito de compras: en la esquina superior derecha de la página de inicio se encuentra un ícono de carrito que redirige a esta página. Acá se podrán encontrar los productos añadidos ya sea al clickear el botón correspondiente en la página de inicio como al hacerlo en la página de detalle. Esta página también cumple con todos los requerimientos para este punto,
-5. TODO
+   **Ruta:** la ruta de la página de detalle en la aplicación es: /products/\[id\]
+4. Carrito de compras: en la esquina superior derecha de la página de inicio se encuentra un ícono de carrito que redirige a esta página. Acá se podrán encontrar los productos añadidos ya sea al clickear el botón correspondiente en la página de inicio como al hacerlo en la página de detalle. Esta página también cumple con todos los requerimientos para este punto.
+   **Ruta:** la ruta de la página de detalle en la aplicación es: /shopping-cart
+5. Página de pago: se programó un formulario simple con los inputs descritos y se usó un toast para confirmar el pago.
+   **Ruta:** la ruta de la página de detalle en la aplicación es: /payment
 
 **Comentarios adicionales:**
 
@@ -62,4 +66,4 @@ No logré realizar los test unitarios. Se intentó las librerías con Jest y Rea
 
 ## Despliegue
 
-TODO
+Para el despliegue se ha utilizado el servicio de Vercel, el cual es perfectamente integrable con las aplicaciones de _Next.js_. Se puede seguir el proceso en esta guía https://nextjs.org/learn/basics/deploying-nextjs-app/deploy.
