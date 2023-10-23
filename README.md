@@ -68,4 +68,4 @@ No logré realizar los test unitarios. Se intentó las librerías con Jest y Rea
 
 Para el despliegue se ha utilizado el servicio de Vercel, el cual es perfectamente integrable con las aplicaciones de _Next.js_. Se puede seguir el proceso en esta guía https://nextjs.org/learn/basics/deploying-nextjs-app/deploy.
 
-**Link de la aplicación desplegada:**https://success-store.vercel.app/
+**Link de la aplicación desplegada:** https://success-store.vercel.app/
