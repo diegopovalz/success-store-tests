@@ -9,11 +9,9 @@ interface CartAddButtonProps {
 }
 
 const CartAddButton = ({ color, size, product }: CartAddButtonProps) => {
-  console.log("product en CartAddButton", product);
   const { addProductToCart } = useShoppingCartContext();
 
   const handleClick = (product: CartProduct) => {
-    console.log("guardando ", product);
     addProductToCart(product);
     toast.success(`${product.title} added to cart!`);
   };

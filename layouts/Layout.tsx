@@ -1,5 +1,5 @@
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { Footer } from "@/components/commons/Footer";
+import { Header } from "@/components/commons/Header";
 import { SearchFilterContextProvider } from "@/context/SearchFilterContext";
 import { ShoppingCartContextProvider } from "@/context/ShoppingCartContext";
 import { ToastContainer } from "react-toastify";

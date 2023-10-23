@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SocialButtons } from "./SocialButtons";
+import { SocialButtons } from "../index/SocialButtons";
 import { FooterNavbar } from "./FooterNavbar";
 
 const Footer = () => {

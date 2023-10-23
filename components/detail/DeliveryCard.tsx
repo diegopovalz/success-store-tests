@@ -1,5 +1,5 @@
 import { LocationText } from "./LocationText";
-import { PrimaryButton } from "./PrimaryButtonBlue";
+import { PrimaryButton } from "../commons/PrimaryButton";
 import { MdLocalShipping, MdPayment } from "react-icons/md";
 
 interface DeliveryCardProps {

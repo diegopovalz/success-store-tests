@@ -1,1 +1,10 @@
-interface PreviewProduct extends Omit<CartProduct, "amount"> {}
+interface PreviewProduct {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+}

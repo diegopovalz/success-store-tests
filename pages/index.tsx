@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { ProductCard } from "@/components/ProductCard";
+import Head from "next/head";
+import { ProductCard } from "@/components/index/ProductCard";
 import { useEffect, useState } from "react";
 import { useSearchFilterContext } from "@/context/SearchFilterContext";
-import { HomeItemsSection } from "@/components/HomeItemsSection";
+import { HomeItemsSection } from "@/components/index/HomeItemsSection";
 
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -40,23 +41,42 @@ const Home = () => {
 
   if (filteredProducts.length === 0) return <p>No products found</p>;
   return (
-    <main className="w-screen flex flex-col">
-      {searchFilter === "" ? (
-        <>
-          <section>
-            <Image
-              src="/images/cyber-monday-shopping.jpg"
-              alt="Cyber monday landing image"
-              width={2000}
-              height={1000}
-            ></Image>
-          </section>
-          <HomeItemsSection title="Explore products">
-            <div className="grid grid-cols-4 auto-rows-auto">
+    <>
+      <Head>
+        <title>Index | Success Store</title>
+      </Head>
+      <main className="w-screen flex flex-col mb-8">
+        {searchFilter === "" ? (
+          <>
+            <section>
+              <Image
+                src="/images/cyber-monday-shopping.jpg"
+                alt="Cyber monday landing image"
+                width={2000}
+                height={1000}
+              ></Image>
+            </section>
+            <HomeItemsSection title="Explore products">
+              <div className="grid grid-cols-4 gap-y-8">
+                {filteredProducts.map((product: Product) => {
+                  return (
+                    <ProductCard
+                      className="col-span-1 w-4/5 h-80"
+                      key={`product-${product.id}`}
+                      product={product}
+                    />
+                  );
+                })}
+              </div>
+            </HomeItemsSection>
+          </>
+        ) : (
+          <HomeItemsSection title={`Search results for "${searchFilter}"`}>
+            <div className="grid grid-cols-4 gap-y-8">
               {filteredProducts.map((product: Product) => {
                 return (
                   <ProductCard
-                    className="col-span-1"
+                    className="col-span-1 w-4/5 h-80"
                     key={`product-${product.id}`}
                     product={product}
                   />
@@ -64,27 +84,9 @@ const Home = () => {
               })}
             </div>
           </HomeItemsSection>
-        </>
-      ) : (
-        <HomeItemsSection title="Search results">
-          <div className="grid grid-cols-4 auto-rows-auto">
-            {filteredProducts.map((product: Product) => {
-              return (
-                <ProductCard
-                  className="col-span-1"
-                  key={`product-${product.id}`}
-                  product={product}
-                />
-              );
-            })}
-          </div>
-        </HomeItemsSection>
-      )}
-      <section>
-        <h2>Explore categories</h2>
-        <div></div>
-      </section>
-    </main>
+        )}
+      </main>
+    </>
   );
 };
 
