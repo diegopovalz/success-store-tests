@@ -39,14 +39,14 @@ Se desea desarrollar el front-end de una aplicación web tipo e-commerce. Esta a
 
 ## Objetivos cumplidos
 
-1. Header y Footer: se han creado un elemento _Layout_ el cual engloba a los elementos _Header_ y _Footer_. Este componente _Layout_ se renderiza en la página \_app.tsx para englobar a toda la aplicación.
-2. Página de inicio: se tiene una página de inicio donde se listan todos los productos obtenidos al hacer request a la ruta https://fakestoreapi.com/products. Se puede realizar un filtrado por título, donde se buscará equivalencias entre la palabra introducida en el filtro de búsqueda y los títulos de los productos. Cada producto cuenta con los elementos requeridos.
+1. **Header y Footer:** se han creado un elemento _Layout_ el cual engloba a los elementos _Header_ y _Footer_. Este componente _Layout_ se renderiza en la página \_app.tsx para englobar a toda la aplicación.
+2. **Página de inicio:** se tiene una página de inicio donde se listan todos los productos obtenidos al hacer request a la ruta https://fakestoreapi.com/products. Se puede realizar un filtrado por título, donde se buscará equivalencias entre la palabra introducida en el filtro de búsqueda y los títulos de los productos. Cada producto cuenta con los elementos requeridos.
    **Ruta en la aplicación:** /
-3. Detalle del producto: se tiene una página de detalle donde se lista el detalle del producto. A esta página se redirige cuando un usuario clickea en el botón de información de un producto en la página principal. La data se obtiene de la ruta https://fakestoreapi.com/products/[id]. Esta página cumple con todos los requerimientos para este punto.
+3. **Detalle del producto:** se tiene una página de detalle donde se lista el detalle del producto. A esta página se redirige cuando un usuario clickea en el botón de información de un producto en la página principal. La data se obtiene de la ruta https://fakestoreapi.com/products/[id]. Esta página cumple con todos los requerimientos para este punto.
    **Ruta en la aplicación:** /products/\[id\]
-4. Carrito de compras: en la esquina superior derecha de la página de inicio se encuentra un ícono de carrito que redirige a esta página. Acá se podrán encontrar los productos añadidos ya sea al clickear el botón correspondiente en la página de inicio como al hacerlo en la página de detalle. Esta página también cumple con todos los requerimientos para este punto.
+4. **Carrito de compras:** en la esquina superior derecha de la página de inicio se encuentra un ícono de carrito que redirige a esta página. Acá se podrán encontrar los productos añadidos ya sea al clickear el botón correspondiente en la página de inicio como al hacerlo en la página de detalle. Esta página también cumple con todos los requerimientos para este punto.
    **Ruta en la aplicación:** /shopping-cart
-5. Página de pago: se programó un formulario simple con los inputs descritos y se usó un toast para confirmar el pago.
+5. **Página de pago:** se programó un formulario simple con los inputs descritos y se usó un toast para confirmar el pago.
    **Ruta:** la ruta de la página de detalle en la aplicación es: /payment
 
 **Comentarios adicionales:**
@@ -60,9 +60,9 @@ Se desea desarrollar el front-end de una aplicación web tipo e-commerce. Esta a
 
 No logré realizar los test unitarios. Se intentó las librerías con Jest y React Testing pero por un error (creo yo) de configuración, no se lograba obtener correctamente el componente de página renderizado. Sin embargo, se tenían planteados los siguientes tests:
 
-1. Validar los productos que se renderizan en la página de inicio: en el test se hace un request a la API para obtener nuevamente la lista de productos; se obtienen los elementos renderizados de ProductCard y se comparan el tamaño de ambas listas y los títulos de los elementos de cada una de las listas, esperando coincidencia en ambos casos.
-2. Añadir, reducir y eliminar producto del carrito de compras: se consulta el _local storage_ o el _useState_ de los productos del carrito para obtener el valor actual de la lista del carro de compras. Se clickea el botón de añadir y se vuelve a validar la lista para comprobar que el producto se ha añadido exitosamente. Se realiza el proceso respectivo para reducir y eliminar.
-3. Reducir lista de acuerdo al filtro: se actualiza el valor del _useState_ del filtro de búsqueda y se obtienen los ProductCard renderizados para la lista filtrada. Se recorre cada uno de estos elementos validando que el título sí contenga la cadena de carácteres introducida en el filtro de búsqueda.
+1. **Validar los productos que se renderizan en la página de inicio:** en el test se hace un request a la API para obtener nuevamente la lista de productos; se obtienen los elementos renderizados de ProductCard y se comparan el tamaño de ambas listas y los títulos de los elementos de cada una de las listas, esperando coincidencia en ambos casos.
+2. **Añadir, reducir y eliminar producto del carrito de compras:** se consulta el _local storage_ o el _useState_ de los productos del carrito para obtener el valor actual de la lista del carro de compras. Se clickea el botón de añadir y se vuelve a validar la lista para comprobar que el producto se ha añadido exitosamente. Se realiza el proceso respectivo para reducir y eliminar.
+3. **Reducir lista de acuerdo al filtro:** se actualiza el valor del _useState_ del filtro de búsqueda y se obtienen los ProductCard renderizados para la lista filtrada. Se recorre cada uno de estos elementos validando que el título sí contenga la cadena de carácteres introducida en el filtro de búsqueda.
 
 ## Despliegue
 
